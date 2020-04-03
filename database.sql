@@ -4,5 +4,5 @@
 CREATE TABLE "tasks" (
 "id" SERIAL PRIMARY KEY,
 "task" VARCHAR(250) NOT NULL,
-"completed" BOOL
+"completed" BOOLEAN NOT NULL DEFAULT false
 );

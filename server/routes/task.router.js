@@ -18,6 +18,20 @@ taskRouter.get("/", (req, res) => {
 });
 
 // post route
+taskRouter.post("/", (req, res) => {
+  const newTaskToAdd = req.body;
+  const queryText = `INSERT INTO "tasks" ("task") VALUES ($1);`;
+  pool
+    .query(queryText, [newTaskToAdd.task])
+    .then(responseFromDb => {
+      console.log(responseFromDb);
+      res.sendStatus(201); // created
+    })
+    .catch(error => {
+      console.log(`POST ERROR: ${ERROR}`);
+      res.sendStatus(500);
+    });
+});
 
 // put/update route
 
