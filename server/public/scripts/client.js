@@ -15,25 +15,32 @@ function init() {
 // EVENT HANDLER
 
 function addTask() {
+  // store new task in an object
   const newTaskObject = {
     task: $(".js-input-new-task").val()
   };
+  // send the new task object to server to save to database
   sendTaskToServer(newTaskObject);
 }
 
 function completeTask(event) {
+  // store the id of the task clicked in a variable
   const completedTaskId = event.target.dataset.id;
   console.log(`Completed Task Id: ${completedTaskId}`);
+  // store the task id and the completed status in an object
   const completedTaskObject = {
     id: completedTaskId,
     completed: "true"
   };
+  // send the object to server to update the completed status in database
   sendCompetedTaskToServer(completedTaskObject);
 }
 
 function deleteTask(event) {
+  // store the id of the task clicked in a variable
   const deletedTaskId = event.target.dataset.id;
   console.log(`Deleted Task Id: ${deletedTaskId}`);
+  // send the completed task id to server to be deleted from database
   sendDeleteTaskToServer(deletedTaskId);
 }
 
@@ -46,6 +53,7 @@ function getTasksFromServer() {
     url: "/tasks"
   })
     .then(response => {
+      // display all tasks on the page
       renderAllTasks(response);
     })
     .catch(error => {
@@ -62,6 +70,9 @@ function sendTaskToServer(taskObject) {
   })
     .then(response => {
       console.log(`POST TASK: ${response}`);
+      // clear input box
+      $(".js-input-new-task").val("");
+      // after new task posted successfully, get all tasks from server to incorporate the new task
       getTasksFromServer();
     })
     .catch(error => {
@@ -78,6 +89,7 @@ function sendCompetedTaskToServer(taskObject) {
   })
     .then(response => {
       console.log(`PUT TASK: ${response}`);
+      // after task completed updated successfully, get all tasks to reflect the change
       getTasksFromServer();
     })
     .catch(error => {
@@ -93,6 +105,7 @@ function sendDeleteTaskToServer(taskId) {
   })
     .then(response => {
       console.log(`DELETE TASK: ${response}`);
+      // after task deleted successfully, get all tasks to reflect the change
       getTasksFromServer();
     })
     .catch(error => {
