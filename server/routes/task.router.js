@@ -27,7 +27,7 @@ taskRouter.post("/", (req, res) => {
       res.sendStatus(201); // created
     })
     .catch(error => {
-      console.log(`POST ERROR: ${ERROR}`);
+      console.log(`POST ERROR: ${error}`);
       res.sendStatus(500);
     });
 });
@@ -39,14 +39,28 @@ taskRouter.put("/:id", (req, res) => {
   const queryText = `UPDATE "tasks" SET "completed" = $1 WHERE "id" = $2;`;
   pool
     .query(queryText, [updatedTaskData.completed, taskId])
-    .then(responseFromFb => {
+    .then(responseFromDb => {
       res.sendStatus(200); // OK
     })
     .catch(error => {
-      console.log(`PUT ERROR: ${ERROR}`);
+      console.log(`PUT ERROR: ${error}`);
       res.sendStatus(500);
     });
 });
+
 // delete route
+taskRouter.delete("/:id", (req, res) => {
+  const taskId = req.params.id;
+  const queryText = `DELETE FROM "tasks" WHERE "id" = $1;`;
+  pool
+    .query(queryText, [taskId])
+    .then(responseFromDb => {
+      res.sendStatus(200);
+    })
+    .catch(error => {
+      console.log(`DELETE ERROR: ${error}`);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = taskRouter;
