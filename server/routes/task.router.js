@@ -24,7 +24,6 @@ taskRouter.post("/", (req, res) => {
   pool
     .query(queryText, [newTaskToAdd.task])
     .then(responseFromDb => {
-      console.log(responseFromDb);
       res.sendStatus(201); // created
     })
     .catch(error => {
@@ -34,7 +33,20 @@ taskRouter.post("/", (req, res) => {
 });
 
 // put/update route
-
+taskRouter.put("/:id", (req, res) => {
+  const taskId = req.params.id;
+  const updatedTaskData = req.body;
+  const queryText = `UPDATE "tasks" SET "completed" = $1 WHERE "id" = $2;`;
+  pool
+    .query(queryText, [updatedTaskData.completed, taskId])
+    .then(responseFromFb => {
+      res.sendStatus(200); // OK
+    })
+    .catch(error => {
+      console.log(`PUT ERROR: ${ERROR}`);
+      res.sendStatus(500);
+    });
+});
 // delete route
 
 module.exports = taskRouter;
