@@ -1,0 +1,141 @@
+/* ----------------------------------------
+** Element Resets
+** ---------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #f5f7f9;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* ----------------------------------------
+** Header
+** ---------------------------------------- */
+
+header {
+  background-color: #c8c8f1;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #3f51b5;
+}
+
+/* ----------------------------------------
+** Panel
+** - wrapping element to give the look
+**   of a raised box
+** ---------------------------------------- */
+
+.panel {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 90%;
+  width: 500px;
+  box-sizing: border-box;
+  background-color: #ffe4c47d;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgb(0, 0, 0, 0.1);
+}
+
+.panel + .panel {
+  margin-top: 20px;
+}
+
+/* ----------------------------------------
+** Button
+** - interactive element for clickable buttons
+** ---------------------------------------- */
+
+.btn {
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #c8c8f1;
+  border-width: 0;
+  border-bottom: 1px solid #3f51b5;
+  color: #3f51b5;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #21dae7;
+}
+
+.btn:disabled {
+  border-width: 0;
+  background-color: #878992;
+  cursor: not-allowed;
+}
+
+.btn_fullWidth {
+  width: 100%;
+}
+
+/* ----------------------------------------
+** Form Fields
+** - styling for both standard input and label
+** ---------------------------------------- */
+
+.fieldLabel {
+  display: block;
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  color: #3f51b5;
+}
+
+.field {
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #3f51b5;
+  font-size: 1rem;
+  color: #3f51b5;
+}
+
+::placeholder {
+  color: #3f51b5;
+}
+/* ----------------------------------------
+** Stacked List
+** - meant for the element wrapping a list
+**   of items
+** ---------------------------------------- */
+
+.stackedList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stackedList > * {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.stackedList > * + * {
+  border-top: 1px solid #75788d;
+}
+
+h3,
+li {
+  color: #3f51b5;
+}
+
+/* ----------------------------------------
+  ** Actions and State
+  ** - utility classes to alter a visual
+  ** ---------------------------------------- */
+
+.isComplete {
+  text-decoration: line-through;
+}

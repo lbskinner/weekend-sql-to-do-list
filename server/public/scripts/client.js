@@ -117,8 +117,14 @@ function sendDeleteTaskToServer(taskId) {
 function renderAllTasks(taskArray) {
   $(".js-todo-list").empty();
   for (let task of taskArray) {
+    let btnClass = "notComplete";
+    let completeGtn = `<button class="js-btn-complete btn" data-id="${task.id}">Complete</button>`;
+    if (task.completed === true) {
+      btnClass = "isComplete";
+      completeGtn = `<button class="js-btn-complete btn" data-id="${task.id}" disabled>Complete</button>`;
+    }
     $(".js-todo-list").append(`
-        <li>${task.task} <button class="js-btn-complete" data-id="${task.id}">Complete</button> <button class="js-btn-delete" data-id="${task.id}">Delete</button></li>
+        <li><span class="${btnClass}">${task.task}</span> <div>${completeGtn} <button class="js-btn-delete btn" data-id="${task.id}">Delete</button></div></li>
         `);
   }
 }
