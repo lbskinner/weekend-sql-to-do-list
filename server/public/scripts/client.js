@@ -34,6 +34,7 @@ function completeTask(event) {
 function deleteTask(event) {
   const deletedTaskId = event.target.dataset.id;
   console.log(`Deleted Task Id: ${deletedTaskId}`);
+  sendDeleteTaskToServer(deletedTaskId);
 }
 
 // API INTERACTIONS
@@ -85,7 +86,19 @@ function sendCompetedTaskToServer(taskObject) {
 }
 
 // delete task
-function sendDeleteTaskToServer(taskObject) {}
+function sendDeleteTaskToServer(taskId) {
+  $.ajax({
+    method: "DELETE",
+    url: `/tasks/${taskId}`
+  })
+    .then(response => {
+      console.log(`DELETE TASK: ${response}`);
+      getTasksFromServer();
+    })
+    .catch(error => {
+      console.log(`DELETE ERROR ${error}`);
+    });
+}
 
 // RENDER TO DOM
 function renderAllTasks(taskArray) {
