@@ -61,6 +61,10 @@ header {
   cursor: pointer;
 }
 
+.btn-size {
+  width: 86px;
+}
+
 .btn:hover {
   background-color: #21dae7;
 }

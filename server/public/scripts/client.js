@@ -129,7 +129,7 @@ function renderAllTasks(taskArray) {
       completeGtn = `<button class="js-btn-complete btn" data-id="${task.id}" disabled>Complete</button>`;
     }
     $(".js-todo-list").append(`
-        <li><span class="${btnClass}">${task.task}</span> <div>${completeGtn} <button class="js-btn-delete btn" data-id="${task.id}">Delete</button></div></li>
+        <li><span class="${btnClass}">${task.task}</span> <div>${completeGtn} <button class="js-btn-delete btn btn-size" data-id="${task.id}">Delete</button></div></li>
         `);
   }
 }
