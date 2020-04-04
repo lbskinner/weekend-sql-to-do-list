@@ -4,20 +4,19 @@
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+For this challenge, I created a To Do List application. This application allows users to add new task, mark complete on the task and delete the task. A user first input a new task and click on the "Add Task" button. If the user did not enter a new task, an alert message will pop up to inform the user to enter a new task. After the user click on the "Add Task" button, the task is send to the server using an ajax POST call and is saved in a database. The completed status for the task created is set to "false" by default. The newly created task will also be displayed on the front end (using an ajax get call) in an alphabetical order by the task name.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+Each task has two button displayed next to it: a "Complete" button and a "Delete" button. Once the user completes a task, the user should click on the "Complete" button. The "Complete" button will be grayed out and the user will not be able to click on it again. The task name will also be crossed out. When the "Completed" button is clicked, an ajax PUT call is used to update the completed status of the task to "true" to the server. The task is still saved in the database and displayed on the page. The task is now displayed first by the completion status and then alphabetically by the task name.
+
+The user can also click on the "Delete" button to delete that task. Once the "Delete" button is clicked, an ajax DELETE call is send to the server. That task will be deleted from the database and will no longer be displayed on the page.
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+![](screenshot.png)
 
 ## Prerequisites
 
-Link to software that is required to install the app (e.g. node).
-
 - [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
 
 ## Installation
 
@@ -25,38 +24,21 @@ How do you get your application up and running? This is a step by step list for 
 
 If your application has secret keys (for example -- Twilio), make sure you tell them how to set that up, both in getting the key and then what to call it in the .env file.
 
-1. Create a database named `your database name`,
-2. The queries in the `tables.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries,
+1. Create a database named `weekend-to-do-app`,
+2. The queries in the `database.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries,
 3. Open up your editor of choice and run an `npm install`
 4. Run `npm run server` in your terminal
 5. Run `npm run client` in your terminal
 6. The `npm run client` command will open up a new browser tab for you!
 
-## Usage
-
-How does someone use this application? Tell a user story here.
-
-1. xxx
-2. xxx
-3. xxx
-4. xxx
-5. xxx
-6. xxx
-
 ## Built With
 
-List technologies and frameworks here
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-_Note, include this only if you have a license file. GitHub will generate one for you if you want!_
+javascript, jquery, node, express, body-parser, pg, SQL, Postman, Postico, Postgres
 
 ## Acknowledgement
 
-Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. (Thank your people)
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality.
 
 ## Support
 
-If you have suggestions or issues, please email me at [youremail@whatever.com](www.google.com)
+If you have suggestions or issues, please email me at [beileiwang@gmail.com](beileiwang@gmail.com).
