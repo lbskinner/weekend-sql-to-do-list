@@ -7,7 +7,7 @@ function init() {
   // add event listener for complete button
   $(".js-todo-list").on("click", ".js-btn-complete", completeTask);
   // add event listener for delete button
-
+  $(".js-todo-list").on("click", ".js-btn-delete", deleteTask);
   // get all tasks when page loads
   getTasksFromServer();
 }
@@ -31,7 +31,10 @@ function completeTask(event) {
   sendCompetedTaskToServer(completedTaskObject);
 }
 
-function deleteTask() {}
+function deleteTask(event) {
+  const deletedTaskId = event.target.dataset.id;
+  console.log(`Deleted Task Id: ${deletedTaskId}`);
+}
 
 // API INTERACTIONS
 
