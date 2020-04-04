@@ -15,12 +15,17 @@ function init() {
 // EVENT HANDLER
 
 function addTask() {
-  // store new task in an object
-  const newTaskObject = {
-    task: $(".js-input-new-task").val()
-  };
-  // send the new task object to server to save to database
-  sendTaskToServer(newTaskObject);
+  // validate input before send it to server
+  if (!$(".js-input-new-task").val()) {
+    alert("Please enter a new task!");
+  } else {
+    // store new task in an object
+    const newTaskObject = {
+      task: $(".js-input-new-task").val()
+    };
+    // send the new task object to server to save to database
+    sendTaskToServer(newTaskObject);
+  }
 }
 
 function completeTask(event) {
